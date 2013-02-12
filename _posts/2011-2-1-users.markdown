@@ -9,7 +9,7 @@ API for accessing and modifying users.
 
 ## Getting User Information
 
-You can get the group information by listing all groups or by specific search terms
+Returns the data for the specified user.
 
 <a id="/users/{uuid}"></a>
 
@@ -92,4 +92,39 @@ $ curl -H "X-ALLPLAYERS-CAPTCHA-TOKEN: bd4586faf8a26a3bae9ef44b7049a14e" \
   "picture": "sites/all/themes/allplayers960/images/avatar_selection/Baseball_Ball.png",
   "email": "usertest2@example.com"
 }
+</pre>
+
+## Getting User Groups Information
+
+Returns a list of the groups that the specified user belongs to.
+
+<a id="/users/{uuid}/groups"></a>
+
+    /users/{uuid}/groups [GET]
+
+<pre class="terminal">
+$ curl -b cjar https://www.allplayers.com/api/v1/rest/users/20374881-0dd9-11e2-92f8-22000a929134/groups.json
+
+[
+   {
+      "uuid":"21e42e05-2146-11e2-92f8-22000a929134",
+      "title":"My Group",
+      "description":"My Group",
+      "logo":"https://d34kk2hki1q2pt.cloudfront.net/sites/default/files/imagecache/profile_small/group_content_logo/fabolous-swag-champ-24-7.jpg",
+      "activity_level":"10.73726983130154",
+      "uri":"https://www.allplayers.com/api/v1/rest/groups/21e42e05-2146-11e2-92f8-22000a929134",
+      "member_count":"2",
+      "events":1,
+      "albums":1
+   },
+   {
+      "uuid":"1867d3c3-5a9f-11e2-99aa-22000a929134",
+      "title":"Another Group",
+      "description":"Another Group",
+      "uri":"https://www.allplayers.com/api/v1/rest/groups/1867d3c3-5a9f-11e2-99aa-22000a929134",
+      "member_count":"1",
+      "events":1,
+      "albums":0
+   }
+]
 </pre>
