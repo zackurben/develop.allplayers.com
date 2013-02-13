@@ -96,14 +96,22 @@ $ curl -H "X-ALLPLAYERS-CAPTCHA-TOKEN: bd4586faf8a26a3bae9ef44b7049a14e" \
 
 ## Getting User Groups Information
 
-Returns a list of the groups that the specified user belongs to.
+Returns a list of the groups that the specified user belongs to. You can use the logged in user's uuid or use "current" to access the data. 
 
 <a id="/users/{uuid}/groups"></a>
 
     /users/{uuid}/groups [GET]
+    
+    --or--
+    
+    /users/current/groups [GET]
 
 <pre class="terminal">
 $ curl -b cjar https://www.allplayers.com/api/v1/rest/users/20374881-0dd9-11e2-92f8-22000a929134/groups.json
+
+--or--
+
+$ curl -L -b cjar https://www.allplayers.com/api/v1/rest/users/current/groups.json
 
 [
    {
