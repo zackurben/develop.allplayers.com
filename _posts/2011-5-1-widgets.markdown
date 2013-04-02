@@ -2,8 +2,7 @@
 layout: default
 title: Widgets
 ---
-<script src="https://d15emhs8isqw9l.cloudfront.net/sites/all/libraries/porthole/src/porthole.min.js" type="text/javascript"></script>
-<script src="js/iframe.js" type="text/javascript"></script>
+<script src="https://www.allplayers.com/sites/all/libraries/allplayers.js/bin/allplayers.embed.client.min.js" type="text/javascript"></script>
 # Widgets
 
 ## Group Registration
@@ -13,41 +12,38 @@ The widget is a simple iframe that you can drop into your page.
 When not logged into AllPlayers, users will be prompted for their username and password or they
 can register for a new account.
 
-**Example**
+## Example
 
-<iframe id="group_register" name="group_register" seamless="seamless" style="border: dashed; overflow-y: hidden;" src="https://platform.allplayers.com/g/api/register#group_register" width="100%" height="0px"></iframe>
-<br />
+<script type="text/javascript">
+  $(function() {
+    $('#group_registration').allplayers_client({
+      group: 'api'
+    });
+  });
+</script>
+<div id="group_registration"></div>
 
-    <iframe id="group_register" name="group_register" seamless="seamless" style="border: none; overflow-y: hidden;" src="https://platform.allplayers.com/g/api/register#group_register" width="100%" height="0px"></iframe>
-
-**Get your app to display widget seamlessly**
+## Usage
 
 One of the goals when having widgets embedded in your application/web site is to have a seamless
-integration so that the user has a better experience, in order to do that we must do some javascript work to communicate
-between the child iframe and the parent.
+integration so that the user has a better experience, to embed a registration within your own
+website, you can use the simple jQuery plugin.
 
-1. Get your iframe to resize dynamically based on content.
+### 1. Include the AllPlayers.com embedded registration source in your header.
 
-We use porthole for the app to be able to communicate cross-domain, so just include it or download it into your app:
-    <script src="https://d15emhs8isqw9l.cloudfront.net/sites/all/libraries/porthole/src/porthole.min.js" type="text/javascript"></script>
+    <script src="https://www.allplayers.com/sites/all/libraries/allplayers.js/bin/allplayers.embed.client.min.js" type="text/javascript"></script>
 
-Then include the following script:
+### 2. Now add an empty DIV tag where you would like to embed the registration.
 
-    function onMessage(messageEvent) {
-      var height = messageEvent.data.height + 'px';
-      console.log(height);
-      // Once height message is received from QS, slide open the iframe
-      $('#group_register').animate({
-        'height' : height
-      }, 200);
-    }
-    var windowProxy;
-    window.onload=function(){
-        // Create a proxy window to send to and receive
-        // messages from the iFrame
-        windowProxy = new Porthole.WindowProxy(
-            '/assets/proxy.html', 'group_register');
+    <div id="group_registration"></div>
 
-        // Register an event handler to receive messages;
-        windowProxy.addEventListener(onMessage);
-    };
+
+### 3. Next, add the jQuery widget code to turn on your registration within the page.
+
+    <script type="text/javascript">
+      $(function() {
+        $('#group_registration').allplayers_client({
+          group: 'api'
+        });
+      });
+    </script>
