@@ -8,8 +8,11 @@ Every Group on AllPlayers has the option to communicate with a web server whenev
 
 ### Adding a webhook
 1.   Open the group page on AllPlayers.com and go to the features page
+![Features](http://content.screencast.com/users/artkon/folders/Jing/media/1c985590-471c-4f5d-8f6e-6f58db65a9e7/00000030.png)
 2.   Enable the webhooks on the group, and then go to the settings page
+![Enable Webhooks](http://content.screencast.com/users/artkon/folders/Jing/media/4d0126f8-3192-4161-b348-445e5c693337/00000031.png)
 3.   Enter your URL and click on Save
+![URL Webhooks](http://content.screencast.com/users/artkon/folders/Jing/media/6be36afe-c262-490e-a504-d09ef32e3456/00000032.png)
 
 ### The member and group data
 
