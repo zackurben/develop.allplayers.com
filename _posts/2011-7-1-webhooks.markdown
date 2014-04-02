@@ -24,6 +24,10 @@ Similarly, when a user gets assigned a role in a group, we'll POST to your URL w
 
 <script src="https://gist.github.com/arturo-c/5869554.js"></script>
 
+And if you have webform data, you get something like this:
+
+<script src="https://gist.github.com/arturo-c/8544271.js"></script>
+
 So, for example, you'd do something like this in a [Sinatra](http://sinatra.rubyforge.org/) server:
 
     post '/' do

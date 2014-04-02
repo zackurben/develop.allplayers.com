@@ -110,3 +110,10 @@ Available keys:
 *  `zip`
 *  `country`
 
+<a id="/submission_data"></a>
+###submission_data
+An array containing submission data information. Only use those fields keyed by field_key specified in the webform.
+E.g.:
+
+*  `profile__field_email__profile`
+*  `profile__field_firstname__profile`
