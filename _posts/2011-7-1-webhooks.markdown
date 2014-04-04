@@ -2,11 +2,11 @@
 layout: default
 title: WebHooks
 ---
-# Post-Receive Hooks
+# AllPlayers Webhooks
 
-Every Group on AllPlayers has the option to communicate with a web server whenever a subgroup or a member is added to the group. These "WebHooks" can be used to update an external application.
+Every Group on AllPlayers has the option to communicate with an external web server via Webhooks. When a subgroup is created or a member is added to a subgroup, a Webhook will be triggered and sent to the specified external URL. These WebHooks can be used to update your external application using our internal data. You can view the contents of our Webhooks below.
 
-### Adding a webhook
+### Enabling Webhooks
 1.   Open the group page on AllPlayers.com and go to the features page
 ![Features](http://content.screencast.com/users/artkon/folders/Jing/media/1c985590-471c-4f5d-8f6e-6f58db65a9e7/00000030.png)
 2.   Enable the webhooks on the group, and then go to the settings page
@@ -14,21 +14,51 @@ Every Group on AllPlayers has the option to communicate with a web server whenev
 3.   Enter your URL and click on Save
 ![URL Webhooks](http://content.screencast.com/users/artkon/folders/Jing/media/6be36afe-c262-490e-a504-d09ef32e3456/00000032.png)
 
-### The member and group data
+### Types of Webhooks
 
-When a new subgroup gets created, we'll POST to your URL with a payload of JSON-encoded data about the group. Here's the template:
+There are currently six Webhooks. These include:
+   1) user_creates_group
+      - Triggered when a sub group is created.
+   2) user_updates_group
+      - Triggered when a sub group has its settings edited.
+   3) user_deletes_group
+      - Triggered when an admin deletes the Group.
+   4) user_adds_role
+      - Triggered when a user is assigned a role within a sub group (eg. A user registers for a position in a group.)
+   5) user_removes_role
+      - Triggered when a user has an attached role removed from its account (eg. A admin removes a role from a member within the group).
+   6) user_adds_submission
+      - Triggered when a user registers for a role and the role has a webform. When the webform is filled out and submitted along with the users registration, the user_adds_submission webhook gets called.
 
-<script src="https://gist.github.com/arturo-c/5868677.js"></script>
+### Webhook Templates
 
-Similarly, when a user gets assigned a role in a group, we'll POST to your URL with a payload of JSON-encoded data about the member and the group. Here's the template:
+```
+user_creates_group
+```
 
-<script src="https://gist.github.com/arturo-c/5869554.js"></script>
+```
+user_updates_group
+```
 
-And if you have webform data, you get something like this:
+```
+user_deletes_group
+```
 
-<script src="https://gist.github.com/arturo-c/8544271.js"></script>
+```
+user_adds_role
+```
 
-So, for example, you'd do something like this in a [Sinatra](http://sinatra.rubyforge.org/) server:
+```
+user_removes_role
+```
+
+```
+user_adds_submission
+```
+
+### Using a Webhook
+
+For one example, you would handle a request like this, in a [Sinatra](http://sinatra.rubyforge.org/) server:
 
     post '/' do
       push = JSON.parse[:event_data])
