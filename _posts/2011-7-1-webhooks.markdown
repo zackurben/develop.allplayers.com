@@ -17,6 +17,7 @@ Every Group on AllPlayers has the option to communicate with an external web ser
 ### Types of Webhooks
 
 There are currently six Webhooks. These include:
+
 1. user_creates_group
    - Triggered when a sub group is created.
 2. user_updates_group
