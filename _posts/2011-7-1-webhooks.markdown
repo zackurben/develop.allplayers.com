@@ -4,15 +4,17 @@ title: WebHooks
 ---
 # AllPlayers Webhooks
 
-Every Group on AllPlayers has the option to communicate with an external web server via Webhooks. When a subgroup is created or a member is added to a subgroup, a Webhook will be triggered and sent to the specified external URL. These WebHooks can be used to update your external application using our internal data. You can view the contents of our Webhooks below.
+Every Group on AllPlayers has the ability to communicate with an external web server via Webhooks. When a subgroup is created or a member is added to a subgroup, a Webhook will be triggered and sent to the specified external URL. These WebHooks can be used to update your external application using our internal data. You can view the contents of our Webhooks below.
 
 ### Enabling Webhooks
-1.   Open the group page on AllPlayers.com and go to the features page
-![Features](http://content.screencast.com/users/artkon/folders/Jing/media/1c985590-471c-4f5d-8f6e-6f58db65a9e7/00000030.png)
-2.   Enable the webhooks on the group, and then go to the settings page
-![Enable Webhooks](http://content.screencast.com/users/artkon/folders/Jing/media/4d0126f8-3192-4161-b348-445e5c693337/00000031.png)
-3.   Enter your URL and click on Save
-![URL Webhooks](http://content.screencast.com/users/artkon/folders/Jing/media/6be36afe-c262-490e-a504-d09ef32e3456/00000032.png)
+1. Open the group page on AllPlayers.com, and go to the features page:
+![](../images/webhooks1.png)
+
+2. Enable the webhooks on the group, and then go to the settings page:
+![](../images/webhooks2.png)
+
+3. Enter your desired URL and click on Save:
+![](../images/webhooks3.png)
 
 ### Types of Webhooks
 
@@ -59,12 +61,12 @@ user_adds_submission
 
 ### Using a Webhook
 
-For one example, you would handle a request like this, in a [Sinatra](http://sinatra.rubyforge.org/) server:
+For one example, you would handle a JSON request like this, in a [Sinatra](http://sinatra.rubyforge.org/) server:
 
-    post '/' do
-      push = JSON.parse[:event_data])
-      "I got some JSON: #{push.inspect}"
-    end
+	post '/' do
+	  push = JSON.parse[:event_data])
+	  "I got some JSON: #{push.inspect}"
+	end
 
 ### Troubleshooting
 
