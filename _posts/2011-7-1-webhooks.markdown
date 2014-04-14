@@ -1,19 +1,19 @@
 ---
 layout: default
-title: WebHooks
+title: Webhooks
 ---
 # AllPlayers Webhooks
 
-Every Group on AllPlayers has the ability to communicate with an external web server via Webhooks. When a subgroup is created or a member is added to a subgroup, a Webhook will be triggered and sent to the specified external URL. These WebHooks can be used to update your external application using our internal data. You can view the contents of our Webhooks below.
+Every Group on AllPlayers has the ability to communicate with an external web server via Webhooks. When a Webhook is triggered the related data, encoded in JSON or form-urlencoded, is sent to your specified external URL. These Webhooks can be used to update your external application using our internal data. You can view the contents and types of available Webhooks below.
 
 ### Enabling Webhooks
-1. Open the group page on AllPlayers.com, and go to the features page:
+1. Open the Group page on AllPlayers.com, and go to the Features page:
 ![](../images/webhooks1.png)
 
-2. Enable the webhooks on the group, and then go to the settings page:
+2. Enable the Webhooks on the Group, and then go to the Settings page:
 ![](../images/webhooks2.png)
 
-3. Enter your desired URL and click on Save:
+3. Enter your desired URL, activate the Webhook, and click on Save:
 ![](../images/webhooks3.png)
 
 ### Types of Webhooks
@@ -34,6 +34,8 @@ There are currently six Webhooks. These include:
    - Triggered when a user registers for a role and the role has a webform. When the webform is filled out and submitted along with the users registration, the user_adds_submission webhook gets called.
 
 ### Webhook Templates
+
+The following are examples of our Webhooks, using the JSON response option.
 
 ```
 user_creates_group
@@ -61,24 +63,26 @@ user_adds_submission
 
 ### Using a Webhook
 
-For one example, you would handle a JSON request like this, in a [Sinatra](http://sinatra.rubyforge.org/) server:
+For one example, in a [Sinatra](http://sinatra.rubyforge.org/) server, you would handle a JSON request like this:
 
-	post '/' do
-	  push = JSON.parse[:event_data])
-	  "I got some JSON: #{push.inspect}"
-	end
+```
+post '/' do
+	push = JSON.parse[:event_data])
+  	"I got some JSON: #{push.inspect}"
+end
+```
 
 ### Troubleshooting
 
-We recommend using [RequestBin](http://requestb.in/), an external service that tests your post-receive messages.
+We recommend using [RequestBin](http://requestb.in/), an external service, to tests the data received from our webhooks.
 
-1.   Visit [RequestBin](http://requestb.in/) and click 'Create a RequestBin'
-2.   Copy the URL you are given
-3.   Open the group settings page in the features section or in the group admin toolbar once you've enabled the webhooks feature.
-4.   Paste the RequestBin URL in the Custom webhook section.
-5.   Click Save.
-6.   Look at the request on requestbin by refreshing the bin page.
+1. Visit [RequestBin](http://requestb.in/) and click 'Create a RequestBin'.
+2. Copy the URL you are given
+3. Open the group settings page in the Features section or in the Group Admin toolbar, once you've enabled the webhooks feature.
+4. Paste the RequestBin URL in the Custom webhook section.
+5. Click Save.
+6. Look at the request on Requestbin by refreshing the bin page.
 
 ### Contributing
 
-Use our guide on contributing using the readme on our github repo for AllPlayers Service Hooks. [Contribute](https://github.com/AllPlayers/service-webhooks)
+If you are interested in making changes to the Service Webhooks, please use our guide on making [contributions](https://github.com/AllPlayers/service-webhooks).
