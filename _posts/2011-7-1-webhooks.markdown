@@ -20,18 +20,14 @@ Every Group on AllPlayers has the ability to communicate with an external web se
 
 There are currently six Webhooks. These include:
 
-1. user_creates_group
-   - Triggered when a sub group is created.
-2. user_updates_group
-   - Triggered when a sub group has its settings edited.
-3. user_deletes_group
-   - Triggered when an admin deletes the Group.
-4. user_adds_role
-   - Triggered when a user is assigned a role within a sub group (eg. A user registers for a position in a group.)
-5. user_removes_role
-   - Triggered when a user has an attached role removed from its account (eg. A admin removes a role from a member within the group).
-6. user_adds_submission
-   - Triggered when a user registers for a role and the role has a webform. When the webform is filled out and submitted along with the users registration, the user_adds_submission webhook gets called.
+Webhook Name | Description
+:------------ | :------------
+user_creates_group | Triggered when a sub group is created.
+user_updates_group | Triggered when a sub group has its settings edited.
+user_deletes_group | Triggered when an admin deletes the Group.
+user_adds_role | Triggered when a user is assigned a role within a sub group (eg. A user registers for a position in a group.)
+user_removes_role | Triggered when a user has an attached role removed from its account (eg. A admin removes a role from a member within the group).
+user_adds_submission |Triggered when a user registers for a role and the role has a webform. When the webform is filled out and submitted along with the users registration, the user_adds_submission webhook gets called.
 
 ### Webhook Templates
 
