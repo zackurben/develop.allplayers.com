@@ -112,7 +112,7 @@ user_deletes_group
 ```
 user_adds_role
 ```
-``json
+```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
