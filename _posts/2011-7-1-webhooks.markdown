@@ -36,26 +36,193 @@ The following are examples of our Webhooks, using the JSON response option.
 ```
 user_creates_group
 ```
+```json
+{
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "group": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "name": "group",
+        "description": "group",
+        "group_category": "Baseball",
+        "group_type": "Team",
+        "postalcode": "12345",
+        "timezone": "-6:00",
+        "organization_id": [
+            "i"
+        ],
+        "url": "https://www.allplayers.com/g/group",
+        "logo": "https://www.allplayers.com/",
+        "group_above": "00000000-0000-0000-0000-000000000000"
+    },
+    "webhook_type": "user_creates_group",
+    "submissions": []
+}
+```
 
 ```
 user_updates_group
+```
+```json
+{
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "group": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "name": "group",
+        "description": "group",
+        "group_category": "Baseball",
+        "group_type": "Team",
+        "postalcode": "12345",
+        "timezone": "-6:00",
+        "organization_id": [
+            "00000000-0000-0000-0000-000000000000"
+        ],
+        "url": "https://www.allplayers.com/g/group",
+        "logo": "https://www.allplayers.com/",
+        "group_above": "00000000-0000-0000-0000-000000000000"
+    },
+    "webhook_type": "user_updates_group"
+}
 ```
 
 ```
 user_deletes_group
 ```
+```json
+{
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "group": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "name": "group",
+        "description": "group",
+        "group_category": "Baseball",
+        "group_type": "Team",
+        "postalcode": "12345",
+        "timezone": "-6:00",
+        "organization_id": [
+            "00000000-0000-0000-0000-000000000000"
+        ],
+        "url": "https://www.allplayers.com/g/group",
+        "logo": "https://www.allplayers.com/",
+        "group_above": "00000000-0000-0000-0000-000000000000"
+    },
+    "webhook_type": "user_deletes_group"
+}
+```
 
 ```
 user_adds_role
+```
+``json
+{
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "group": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "name": "group",
+        "description": "group",
+        "group_category": "Baseball",
+        "group_type": "Team",
+        "postalcode": "12345",
+        "timezone": "-6:00",
+        "organization_id": [
+            "00000000-0000-0000-0000-000000000000"
+        ],
+        "logo": "https://www.allplayers.com/",
+        "group_above": "00000000-0000-0000-0000-000000000000"
+    },
+    "member": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "group_uuid": "00000000-0000-0000-0000-000000000000",
+        "group_name": "group",
+        "first_name": null,
+        "last_name": null,
+        "join_date": "0000-00-00 00:00:00",
+        "role_name": "Admin",
+        "role_uuid": "00000000-0000-0000-0000-000000000000",
+        "is_admin": true
+    },
+    "webhook_type": "user_adds_role",
+    "submissions": []
+}
 ```
 
 ```
 user_removes_role
 ```
+```json
+{
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "group": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "name": "group",
+        "description": "group",
+        "group_category": "Baseball",
+        "group_type": "Team",
+        "postalcode": "12345",
+        "timezone": "-6:00",
+        "organization_id": [
+            "00000000-0000-0000-0000-000000000000"
+        ],
+        "url": "https://www.allplayers.com/g/group",
+        "logo": "https://www.allplayers.com/",
+        "group_above": "00000000-0000-0000-0000-000000000000"
+    },
+    "member": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "group_uuid": "00000000-0000-0000-0000-000000000000",
+        "group_name": "group",
+        "first_name": null,
+        "last_name": null,
+        "join_date": "1969-12-31 18:00:00",
+        "role_name": "Player",
+        "role_uuid": "00000000-0000-0000-0000-000000000000",
+        "is_admin": 1
+    },
+    "webhook_type": "user_removes_role"
+}
+```
 
 ```
 user_adds_submission
 ```
+```json
+{
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "group": {
+        "uuid": "00000000-0000-0000-0000-000000000000",
+        "name": "group",
+        "description": "group",
+        "group_category": "Baseball",
+        "group_type": "Team",
+        "postalcode": "12345",
+        "timezone": "-6:00",
+        "organization_id": [
+            "00000000-0000-0000-0000-000000000000"
+        ],
+        "url": "https://www.allplayers.com/g/group",
+        "logo": "https://www.allplayers.com/",
+        "group_above": "00000000-0000-0000-0000-000000000000"
+    },
+    "webform": {
+        "title": "Form",
+        "uuid": "00000000-0000-0000-0000-000000000000"
+    },
+    "webform_submission": {
+        "submission_id": 1,
+        "user_uuid": "00000000-0000-0000-0000-000000000000",
+        "data": {
+            "field_name": {
+                "cid": 1,
+                "value": "data"
+            }
+        }
+    },
+    "webhook_type": "user_adds_submission",
+    "submissions": {
+        "2038": "first"
+    }
+}
+```
+
 
 ### Using a Webhook
 
@@ -63,8 +230,8 @@ For one example, in a [Sinatra](http://sinatra.rubyforge.org/) server, you would
 
 ```
 post '/' do
-	push = JSON.parse[:event_data])
-  	"I got some JSON: #{push.inspect}"
+    push = JSON.parse[:event_data])
+    "I got some JSON: #{push.inspect}"
 end
 ```
 
