@@ -33,9 +33,8 @@ user_adds_submission |Triggered when a user registers for a role and the role ha
 
 The following are examples of our Webhooks, using the JSON response option.
 
-```
-user_creates_group
-```
+
+#### user_creates_group
 ```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
@@ -48,7 +47,7 @@ user_creates_group
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "i"
+            "00000000-0000-0000-0000-000000000000"
         ],
         "url": "https://www.allplayers.com/g/group",
         "logo": "https://www.allplayers.com/",
@@ -59,9 +58,7 @@ user_creates_group
 }
 ```
 
-```
-user_updates_group
-```
+#### user_updates_group
 ```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
@@ -84,9 +81,7 @@ user_updates_group
 }
 ```
 
-```
-user_deletes_group
-```
+#### user_deletes_group
 ```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
@@ -109,9 +104,7 @@ user_deletes_group
 }
 ```
 
-```
-user_adds_role
-```
+#### user_adds_role
 ```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
@@ -133,8 +126,8 @@ user_adds_role
         "uuid": "00000000-0000-0000-0000-000000000000",
         "group_uuid": "00000000-0000-0000-0000-000000000000",
         "group_name": "group",
-        "first_name": null,
-        "last_name": null,
+        "first_name": "first",
+        "last_name": "last",
         "join_date": "0000-00-00 00:00:00",
         "role_name": "Admin",
         "role_uuid": "00000000-0000-0000-0000-000000000000",
@@ -145,9 +138,7 @@ user_adds_role
 }
 ```
 
-```
-user_removes_role
-```
+#### user_removes_role
 ```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
@@ -170,8 +161,8 @@ user_removes_role
         "uuid": "00000000-0000-0000-0000-000000000000",
         "group_uuid": "00000000-0000-0000-0000-000000000000",
         "group_name": "group",
-        "first_name": null,
-        "last_name": null,
+        "first_name": "first",
+        "last_name": "last",
         "join_date": "1969-12-31 18:00:00",
         "role_name": "Player",
         "role_uuid": "00000000-0000-0000-0000-000000000000",
@@ -181,9 +172,8 @@ user_removes_role
 }
 ```
 
-```
-user_adds_submission
-```
+
+#### user_adds_submission
 ```json
 {
     "uuid": "00000000-0000-0000-0000-000000000000",
