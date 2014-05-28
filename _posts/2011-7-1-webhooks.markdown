@@ -6,6 +6,8 @@ title: Webhooks
 
 Every Group on AllPlayers has the ability to communicate with an external web server via Webhooks. When a Webhook is triggered the related data, encoded in JSON or form-urlencoded, is sent to your specified external URL. These Webhooks can be used to update your external application using our internal data. You can view the contents and types of available Webhooks below.
 
+**Note:** Webhooks for a group are sent, based on the parent group webhook settings.
+
 ### Enabling Webhooks
 1. Open the Group page on AllPlayers.com, and go to the Features page:
 ![](../images/webhooks1.png)
@@ -26,8 +28,8 @@ user_creates_group | Triggered when a sub group is created.
 user_updates_group | Triggered when a sub group has its settings edited.
 user_deletes_group | Triggered when an admin deletes the Group.
 user_adds_role | Triggered when a user is assigned a role within a sub group (eg. A user registers for a position in a group.)
-user_removes_role | Triggered when a user has an attached role removed from its account (eg. A admin removes a role from a member within the group).
-user_adds_submission |Triggered when a user registers for a role and the role has a webform. When the webform is filled out and submitted along with the users registration, the user_adds_submission webhook gets called.
+user_removes_role | Triggered when a user has an attached role removed from its account (eg. An admin removes a role from a member within the group).
+user_adds_submission | Triggered when a user registers for a role with a webform. **Note:** The user_adds_submission webhook is separate from user_adds_role.
 
 ### Webhook Templates
 
@@ -37,45 +39,58 @@ The following are examples of our Webhooks, using the JSON response option.
 #### user_creates_group
 ```json
 {
-    "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "name": "group",
-        "description": "group",
-        "group_category": "Baseball",
+        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
+        "name": "demo",
+        "description": "demo",
+        "group_category": "Basketball",
         "group_type": "Team",
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "00000000-0000-0000-0000-000000000000"
+            "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/group",
-        "logo": "https://www.allplayers.com/",
-        "group_above": "00000000-0000-0000-0000-000000000000"
+        "url": "https://www.example.com/g/demo",
+        "logo": "https://www.example.com/",
+        "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
-    "webhook_type": "user_creates_group",
-    "submissions": []
+    "member": {
+        "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
+        "first_name": "first",
+        "last_name": "last",
+        "email": "email@example.com",
+        "join_date": "2014-04-16 08:58:46",
+        "is_admin": true
+    },
+    "webhook_type": "user_creates_group"
 }
 ```
 
 #### user_updates_group
 ```json
 {
-    "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "name": "group",
-        "description": "group",
-        "group_category": "Baseball",
+        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
+        "name": "demo_name change",
+        "description": "demo",
+        "group_category": "Basketball",
         "group_type": "Team",
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "00000000-0000-0000-0000-000000000000"
+            "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/group",
-        "logo": "https://www.allplayers.com/",
-        "group_above": "00000000-0000-0000-0000-000000000000"
+        "url": "https://www.example.com/g/demo",
+        "logo": "https://www.example.com/",
+        "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
+    },
+    "member": {
+        "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
+        "first_name": "first",
+        "last_name": "last",
+        "email": "email@example.com",
+        "join_date": "2014-04-16 08:58:46",
+        "is_admin": true
     },
     "webhook_type": "user_updates_group"
 }
@@ -84,21 +99,28 @@ The following are examples of our Webhooks, using the JSON response option.
 #### user_deletes_group
 ```json
 {
-    "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "name": "group",
-        "description": "group",
-        "group_category": "Baseball",
+        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
+        "name": "demo_name change",
+        "description": "demo",
+        "group_category": "Basketball",
         "group_type": "Team",
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "00000000-0000-0000-0000-000000000000"
+            "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/group",
-        "logo": "https://www.allplayers.com/",
-        "group_above": "00000000-0000-0000-0000-000000000000"
+        "url": "https://www.example.com/g/d",
+        "logo": "https://www.example.com/",
+        "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
+    },
+    "member": {
+        "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
+        "first_name": "first",
+        "last_name": "last",
+        "email": "email@example.com",
+        "join_date": "2014-04-16 08:58:46",
+        "is_admin": true
     },
     "webhook_type": "user_deletes_group"
 }
@@ -107,66 +129,60 @@ The following are examples of our Webhooks, using the JSON response option.
 #### user_adds_role
 ```json
 {
-    "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "name": "group",
-        "description": "group",
-        "group_category": "Baseball",
+        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
+        "name": "demo",
+        "description": "demo",
+        "group_category": "Basketball",
         "group_type": "Team",
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "00000000-0000-0000-0000-000000000000"
+            "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "logo": "https://www.allplayers.com/",
-        "group_above": "00000000-0000-0000-0000-000000000000"
+        "url": "https://www.example.com/g/d",
+        "logo": "https://www.example.com/",
+        "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "group_uuid": "00000000-0000-0000-0000-000000000000",
-        "group_name": "group",
+        "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
         "first_name": "first",
         "last_name": "last",
-        "join_date": "0000-00-00 00:00:00",
-        "role_name": "Admin",
-        "role_uuid": "00000000-0000-0000-0000-000000000000",
-        "is_admin": true
+        "email": "email@example.com",
+        "join_date": "2014-04-16 08:58:46",
+        "is_admin": true,
+        "role_name": "Player"
     },
-    "webhook_type": "user_adds_role",
-    "submissions": []
+    "webhook_type": "user_adds_role"
 }
 ```
 
 #### user_removes_role
 ```json
 {
-    "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "name": "group",
-        "description": "group",
-        "group_category": "Baseball",
+        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
+        "name": "demo_name change",
+        "description": "demo",
+        "group_category": "Basketball",
         "group_type": "Team",
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "00000000-0000-0000-0000-000000000000"
+            "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/group",
-        "logo": "https://www.allplayers.com/",
-        "group_above": "00000000-0000-0000-0000-000000000000"
+        "url": "https://www.example.com/g/d",
+        "logo": "https://www.example.com/",
+        "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "group_uuid": "00000000-0000-0000-0000-000000000000",
-        "group_name": "group",
+        "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
         "first_name": "first",
         "last_name": "last",
-        "join_date": "1969-12-31 18:00:00",
-        "role_name": "Player",
-        "role_uuid": "00000000-0000-0000-0000-000000000000",
-        "is_admin": 1
+        "email": "email@example.com",
+        "join_date": "2014-04-16 08:58:46",
+        "is_admin": true,
+        "role_name": "Player"
     },
     "webhook_type": "user_removes_role"
 }
@@ -176,40 +192,50 @@ The following are examples of our Webhooks, using the JSON response option.
 #### user_adds_submission
 ```json
 {
-    "uuid": "00000000-0000-0000-0000-000000000000",
     "group": {
-        "uuid": "00000000-0000-0000-0000-000000000000",
-        "name": "group",
-        "description": "group",
-        "group_category": "Baseball",
+        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
+        "name": "demo",
+        "description": "demo",
+        "group_category": "Basketball",
         "group_type": "Team",
         "postalcode": "12345",
         "timezone": "-6:00",
         "organization_id": [
-            "00000000-0000-0000-0000-000000000000"
+            "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/group",
-        "logo": "https://www.allplayers.com/",
-        "group_above": "00000000-0000-0000-0000-000000000000"
+        "url": "https://www.example.com/g/d",
+        "logo": "https://www.example.com/",
+        "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
+    },
+    "member": {
+        "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
+        "first_name": "first",
+        "last_name": "last",
+        "email": "email@example.com",
+        "join_date": "2014-04-16 08:58:46",
+        "is_admin": true
     },
     "webform": {
-        "title": "Form",
-        "uuid": "00000000-0000-0000-0000-000000000000"
-    },
-    "webform_submission": {
-        "submission_id": 1,
-        "user_uuid": "00000000-0000-0000-0000-000000000000",
+        "title": "form1",
+        "uuid": "f7703466-e670-11e3-9e7c-c2fce4bc2c70",
         "data": {
-            "field_name": {
-                "cid": 1,
-                "value": "data"
-            }
+            "profile__field_firstname__profile": "first_form",
+            "profile__field_lastname__profile": "last_form",
+            "profile__field_email__profile": "email@example.com",
+            "profile__field_birth_date__profile": "1984-04-17",
+            "profile__field_user_gender__profile": "2",
+            "profile__field_phone__profile": "1111111111",
+            "profile__field_phone_cell__profile": "2222222222",
+            "profile__field_work_number__profile": "3333333333",
+            "profile__field_home_address_street__profile": "address 1_1",
+            "profile__field_home_address_additional__profile": "address1_2",
+            "profile__field_home_address_city__profile": "city",
+            "profile__field_home_address_province__profile": "NY",
+            "profile__field_home_address_postal_code__profile": "12345",
+            "profile__field_home_address_country__profile": "us"
         }
     },
-    "webhook_type": "user_adds_submission",
-    "submissions": {
-        "2038": "first"
-    }
+    "webhook_type": "user_adds_submission"
 }
 ```
 
