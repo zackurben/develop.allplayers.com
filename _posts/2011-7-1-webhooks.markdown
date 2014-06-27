@@ -111,7 +111,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "organization_id": [
             "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/w",
+        "url": "https://www.allplayers.com/g/webhookstest",
         "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
@@ -259,7 +259,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "organization_id": [
             "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/w",
+        "url": "https://www.allplayers.com/g/webhookstest",
         "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
@@ -322,7 +322,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "organization_id": [
             "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/w",
+        "url": "https://www.allplayers.com/g/webhookstest",
         "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
@@ -385,7 +385,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "organization_id": [
             "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.allplayers.com/g/w",
+        "url": "https://www.allplayers.com/g/webhookstest",
         "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
