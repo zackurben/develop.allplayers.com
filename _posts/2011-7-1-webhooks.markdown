@@ -101,26 +101,25 @@ The following are examples of our Webhooks, using the JSON response option.
 ```json
 {
     "group": {
-        "uuid": "a5601bd6-e670-11e3-9e7c-c2fce4bc2c70",
-        "name": "demo_name change",
-        "description": "demo",
-        "group_category": "Basketball",
+        "uuid": "1268c823-fd3b-11e3-8b92-c2fce4bc2c70",
+        "name": "webhookstest_nameupdate",
+        "description": "webhookstest",
+        "group_category": "Baseball",
         "group_type": "Team",
         "postalcode": "12345",
-        "timezone": "-6:00",
+        "timezone": "America/Chicago",
         "organization_id": [
             "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.example.com/g/demo",
-        "logo": "https://www.example.com/sites/default/files/demoimage_0.png",
+        "url": "https://www.allplayers.com/g/w",
         "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
         "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
         "first_name": "first",
         "last_name": "last",
-        "email": "email@example.com",
-        "join_date": "2014-04-16 08:58:46",
+        "email": "example@example.com",
+        "join_date": "2014-04-16T08:58:46-05:00",
         "is_admin": true
     },
     "webhook_type": "user_deletes_group"
@@ -323,7 +322,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "organization_id": [
             "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.zurben.apci.ws/g/w",
+        "url": "https://www.allplayers.com/g/w",
         "group_above": "a34a2105-c576-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
