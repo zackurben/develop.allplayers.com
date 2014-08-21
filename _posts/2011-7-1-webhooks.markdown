@@ -2,45 +2,67 @@
 layout: default
 title: Webhooks
 ---
+
 # AllPlayers Webhooks
+Every Group on AllPlayers has the ability to communicate with an external web
+server via Webhooks. When a Webhook is triggered the related data, encoded in
+JSON or form-urlencoded, is sent to your specified external URL. These Webhooks
+can be used to update your external application using our internal data. You can
+view the contents and types of available Webhooks below.
 
-Every Group on AllPlayers has the ability to communicate with an external web server via Webhooks. When a Webhook is triggered the related data, encoded in JSON or form-urlencoded, is sent to your specified external URL. These Webhooks can be used to update your external application using our internal data. You can view the contents and types of available Webhooks below.
+**Note:** Webhooks for a group are sent, based on the parent groups webhook
+settings.
 
-**Note:** Webhooks for a group are sent, based on the parent group webhook settings.
+Check out the following for more information:<br>
+1. <a href="#enabling-webhooks">Enabling Webhooks</a><br>
+-  <a href="#types-of-Webhooks">Types of Webhooks</a><br>
+-  <a href="#webhook-templates">Webhook Templates</a><br>
+ -  <a href="#user_creates_group">user_creates_group</a><br>
+ -  <a href="#user_updates_group">user_updates_group</a><br>
+ -  <a href="#user_deletes_group">user_deletes_group</a><br>
+ -  <a href="#user_adds_role">user_adds_role</a><br>
+ -  <a href="#user_removes_role">user_removes_role</a><br>
+ -  <a href="#user_adds_submission">user_adds_submission</a><br>
+ -  <a href="#user_removed_from_group">user_removed_from_group</a><br>
+ -  <a href="#user_creates_event">user_creates_event</a><br>
+ -  <a href="#user_updates_event">user_updates_event</a><br>
+ -  <a href="#user_deletes_event">user_deletes_event</a><br>
+-  <a href="#using-a-webhook">Using a Webhook</a><br>
+-  <a href="#troubleshooting">Troubleshooting</a><br>
+-  <a href="#contributing">Contributing</a><br>
 
-### Enabling Webhooks
+<br>
+## <a name="#enabling-webhooks">Enabling Webhooks</a>
 1. Open the Group page on AllPlayers.com, and go to the Features page:
 ![](../images/webhooks1.png)
-
-2. Enable the Webhooks on the Group, and then go to the Settings page:
+- Enable the Webhooks on the Group, and then go to the Settings page:
 ![](../images/webhooks2.png)
-
-3. Enter your desired URL, activate the Webhook, and click on Save:
+- Enter your desired URL, activate the Webhook, and click on Save:
 ![](../images/webhooks3.png)
 
-### Types of Webhooks
-
-There are currently six Webhooks. These include:
+<br>
+## <a name="#types-of-Webhooks">Types of Webhooks</a>
+There are currently ten Webhooks. These include:
 
 Webhook Name | Description
 :------------ | :------------
 user_creates_group | Triggered when a sub group is created.
 user_updates_group | Triggered when a sub group has its settings edited.
 user_deletes_group | Triggered when an admin deletes the Group.
-user_adds_role | Triggered when a user is assigned a role within a sub group (eg. A user registers for a position in a group.)
-user_removes_role | Triggered when a user has an attached role removed from its account (eg. An admin removes a role from a member within the group).
-user_adds_submission | Triggered when a user registers for a role with a webform. **Note:** The user_adds_submission webhook is separate from user_adds_role.
+user_adds_role | Triggered when a user is assigned a role within a sub group (e.g. A user registers for a position in a group.)
+user_removes_role | Triggered when a user has an attached role removed from its account (e.g. An admin removes a role from a member within the group).
+user_adds_submission | Triggered when a user registers for a role with a webform. <br><br>**Note:** The user_adds_submission webhook is sent separately from the user_adds_role webhook.
 user_removed_from_group | Triggered when a user is removed from a group.
 user_creates_event | Triggered when an event is created.
 user_updates_event | Triggered when an event is updated.
 user_deletes_event | Triggered when an event is deleted.
 
-### Webhook Templates
-
+<br>
+## <a name="#webhook-templates">Webhook Templates</a><br>
 The following are examples of our Webhooks, using the JSON response option.
 
-
-#### user_creates_group
+<br>
+### <a name="#user_creates_group">user_creates_group</a>
 ```json
 {
     "group": {
@@ -69,7 +91,8 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-#### user_updates_group
+<br>
+### <a name="#user_updates_group">user_updates_group</a>
 ```json
 {
     "group": {
@@ -98,7 +121,7 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-#### user_deletes_group
+### <a name="#user_deletes_group">user_deletes_group</a>
 ```json
 {
     "group": {
@@ -127,7 +150,7 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-#### user_adds_role
+### <a name="#user_adds_role">user_adds_role</a>
 ```json
 {
     "group": {
@@ -163,7 +186,7 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-#### user_removes_role
+### <a name="#user_removes_role">user_removes_role</a>
 ```json
 {
     "group": {
@@ -200,7 +223,7 @@ The following are examples of our Webhooks, using the JSON response option.
 ```
 
 
-#### user_adds_submission
+### <a name="#user_adds_submission">user_adds_submission</a>
 ```json
 {
     "group": {
@@ -246,13 +269,13 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-### user_removed_from_group
+### <a name="#user_removed_from_group">user_removed_from_group</a>
 ```json
 {
     "group": {
         "uuid": "2e8887bf-06cc-11e4-b1ac-c2fce4bc2c70",
-        "name": "webhooktest0",
-        "description": "webhooktest0",
+        "name": "webhooktest",
+        "description": "webhooktest",
         "group_category": "Baseball",
         "group_type": "Team",
         "postalcode": "12345",
@@ -260,7 +283,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "organization_id": [
             "4a8dca4e-cf0e-11e3-acdb-c2fce4bc2c70"
         ],
-        "url": "https://www.zurben.apci.ws/g/webhooktest0",
+        "url": "https://www.allplayers.com/g/webhookstest",
         "group_above": "4a8dca4e-cf0e-11e3-acdb-c2fce4bc2c70"
     },
     "member": {
@@ -272,7 +295,7 @@ The following are examples of our Webhooks, using the JSON response option.
         "is_admin": false,
         "guardian": {
             "uuid": "3ad97be5-c56f-11e3-acdb-c2fce4bc2c70",
-            "email": "zurben@allplayers.com",
+            "email": "example@example.com",
             "first_name": "john",
             "last_name": "smith"
         }
@@ -281,7 +304,7 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-### user_creates_event
+### <a name="#user_creates_event">user_creates_event</a>
 ```json
 {
     "group": {
@@ -344,7 +367,7 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-### user_updates_event
+### <a name="#user_updates_event">user_updates_event</a>
 ```json
 {
     "group": {
@@ -407,7 +430,7 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-### user_deletes_event
+### <a name="#user_deletes_event">user_deletes_event</a>
 ```json
 {
     "group": {
@@ -470,28 +493,32 @@ The following are examples of our Webhooks, using the JSON response option.
 }
 ```
 
-### Using a Webhook
+<br>
+## <a name="#using-a-webhook">Using a Webhook</a>
+For one example, in a [Sinatra](http://sinatra.rubyforge.org/) server, you would
+handle a JSON request like this:
 
-For one example, in a [Sinatra](http://sinatra.rubyforge.org/) server, you would handle a JSON request like this:
-
-```
+```ruby
 post '/' do
     push = JSON.parse[:event_data])
     "I got some JSON: #{push.inspect}"
 end
 ```
 
-### Troubleshooting
-
-We recommend using [RequestBin](http://requestb.in/), an external service, to tests the data received from our webhooks.
+<br>
+## <a name="#troubleshooting">Troubleshooting</a>
+We recommend using [RequestBin](http://requestb.in/), an external service, to
+tests the data received from our webhooks.
 
 1. Visit [RequestBin](http://requestb.in/) and click 'Create a RequestBin'.
-2. Copy the URL you are given
-3. Open the group settings page in the Features section or in the Group Admin toolbar, once you've enabled the webhooks feature.
-4. Paste the RequestBin URL in the Custom webhook section.
-5. Click Save.
-6. Look at the request on Requestbin by refreshing the bin page.
+-  Copy the URL you are given
+-  Open the group settings page in the Features section or in the Group Admin
+toolbar, once you've enabled the webhooks feature.
+-  Paste the RequestBin URL in the Custom webhook section.
+-  Click Save.
+-  Look at the request on Requestbin by refreshing the bin page.
 
-### Contributing
-
-If you are interested in making changes to the Service Webhooks, please use our guide on making [contributions](https://github.com/AllPlayers/service-webhooks).
+<br>
+## <a name="#contributing">Contributing</a>
+If you are interested in making changes to the Service Webhooks, please use our
+guide on making [contributions](https://github.com/AllPlayers/service-webhooks#steps-to-contributing).
